@@ -225,35 +225,52 @@ sudo yum install tkinter
 ## Installation
 
 ### Quick Setup Guide (Windows)
-```bash
-# 1. Install prerequisites from Microsoft Store
-# - Search for "Git" and install
-# - Search for "Python 3.10" and install
-# - Search for "Windows Terminal" (optional but recommended)
 
-# 2. Install OpenSSL using Chocolatey
-# Open PowerShell as Administrator and run:
+This guide uses **two different terminals**. Do steps 1–2 in an
+**Administrator PowerShell** (required to install Chocolatey/OpenSSL), then do
+steps 3–6 in a **new, normal (non-Administrator) Command Prompt**.
+
+> ⚠️ **Open a fresh terminal after installing anything.** Newly installed tools
+> (Git, Python, OpenSSL) are only added to `PATH` in terminals opened *after*
+> the install. If `git`, `python`, or `openssl` is "not recognized," close the
+> window and open a new one (or run `refreshenv` in the Chocolatey shell).
+
+**Steps 1–2 — Administrator PowerShell** (right-click PowerShell → "Run as administrator"):
+```powershell
+# 1. Install Git and Python from the Microsoft Store
+#    - Search for "Git" and install
+#    - Search for "Python 3.10" (or newer) and install
+#    - Search for "Windows Terminal" (optional but recommended)
+
+# 2. Install Chocolatey, then OpenSSL (OpenSSL is NOT on the Microsoft Store)
 Set-ExecutionPolicy Bypass -Scope Process -Force
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
 iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 choco install openssl
+```
 
-# 3. Navigate to a user directory (avoid system directories)
-cd C:\Users\%USERNAME%\Documents
+**Steps 3–6 — new, normal Command Prompt** (not Administrator):
+```bat
+:: 3. Navigate to a user directory (avoid system directories)
+cd %USERPROFILE%\Documents
 mkdir OCSPTesting
 cd OCSPTesting
 
-# 4. Clone the repository
-git clone <repository-url> .
+:: 4. Clone the repository
+git clone https://github.com/jgoodloe/OCSPTesting.git .
 
-# 5. Create virtual environment and install dependencies
+:: 5. Create virtual environment and install dependencies
 python -m venv venv
-venv\Scripts\activate
+venv\Scripts\activate.bat
 pip install -r requirements.txt
 
-# 6. Run the application
+:: 6. Run the application
 python app.py
 ```
+
+> Using PowerShell instead of Command Prompt for steps 3–6? Activate the
+> virtual environment with `venv\Scripts\Activate.ps1` (if blocked, run
+> `Set-ExecutionPolicy -Scope Process RemoteSigned` first).
 
 ### Prerequisites
 Before installing the OCSP Testing Tool, ensure you have installed:
