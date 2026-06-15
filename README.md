@@ -26,9 +26,11 @@ A comprehensive testing application for OCSP (Online Certificate Status Protocol
 
 ### External Software Dependencies
 
-#### 1. Git
-**Required Version**: Git 2.0+ (for cloning the repository)
-**Purpose**: Version control and repository cloning
+#### 1. Git (optional)
+**Required Version**: Git 2.0+
+**Purpose**: Cloning the repository. **Optional** — you can instead download the
+project as a ZIP from GitHub (Code → Download ZIP). Only needed if you prefer to
+`git clone` or plan to contribute.
 
 **Installation Instructions:**
 
@@ -254,11 +256,11 @@ python app.py
 
 ### Prerequisites
 Before installing the OCSP Testing Tool, ensure you have installed:
-1. **Git** (for cloning the repository)
-2. **Python 3.10+** with pip (for running the application)
-3. **OpenSSL** (for certificate operations)
+1. **Python 3.10+** with pip (required — for running the application)
+2. **OpenSSL** (required — for certificate operations)
+3. **Git** (optional — only if you'd rather `git clone` than download the ZIP)
 
-**💡 Windows Users**: Git and OpenSSL are **not** on the Microsoft Store — install both with [Scoop](https://scoop.sh): `scoop install git openssl` (see the Quick Setup Guide below to install Scoop first). Install **Python** from the Microsoft Store (pip and tkinter are included). For the best command-line experience, also consider installing **Windows Terminal** from the Microsoft Store.
+**💡 Windows Users**: **OpenSSL** is **not** on the Microsoft Store — install it with [Scoop](https://scoop.sh): `scoop install openssl` (see the Quick Setup Guide below to install Scoop first). Install **Python** from the Microsoft Store (pip and tkinter are included). Git is optional; if you want it, it's also Scoop-only (not on the Store): `scoop install git`. For the best command-line experience, also consider installing **Windows Terminal** from the Microsoft Store.
 
 See the [System Requirements](#system-requirements) section above for detailed installation instructions.
 
