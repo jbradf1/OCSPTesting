@@ -33,19 +33,22 @@ A comprehensive testing application for OCSP (Online Certificate Status Protocol
 **Installation Instructions:**
 
 **Windows:**
-```bash
-# Option 1: Microsoft Store (recommended - easiest)
-# Search for "Git" in Microsoft Store and install
 
-# Option 2: Download installer
-# Download from: https://git-scm.com/download/win
-# Run the installer and follow the setup wizard
+> Git is **not** available on the Microsoft Store. The easiest way to install it
+> on Windows is with [Scoop](https://scoop.sh).
 
-# Option 3: Using Chocolatey
-choco install git
+```powershell
+# 1. Install Scoop (run once, in a normal PowerShell window)
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 
-# Option 4: Using Scoop
+# 2. Install Git
 scoop install git
+```
+
+```text
+# Alternative: download the official installer from
+# https://git-scm.com/download/win and run the setup wizard.
 ```
 
 **Linux (Ubuntu/Debian):**
@@ -145,30 +148,23 @@ pip --version
 **Installation Instructions**:
 
 **Windows:**
-```bash
-# Option 1: Using Chocolatey (recommended)
-# Requires Chocolatey to be installed first. If you don't have it, install it
-# from an Administrator PowerShell (see the bootstrap command in the
-# "Quick Setup Guide" below) or visit https://chocolatey.org/install
-choco install openssl
 
-# Option 2: Using Scoop
-# Requires Scoop to be installed first. If you don't have it, install it from
-# PowerShell: irm get.scoop.sh | iex   (see https://scoop.sh)
+> OpenSSL is **not** published on the Microsoft Store. Install it with
+> [Scoop](https://scoop.sh) (recommended) or the manual installer below.
+
+```powershell
+# Recommended: using Scoop (see the Git section above to install Scoop first)
 scoop install openssl
-
-# Option 3: Manual installation
-# Download from: https://slproweb.com/products/Win32OpenSSL.html
-# Install to a directory in your PATH (e.g., C:\OpenSSL-Win64\bin)
-# IMPORTANT: The slproweb builds require the Microsoft Visual C++
-# Redistributable. The full installer can install it for you; the "Light"
-# builds do NOT, so if you see a "VCRUNTIME140.dll is missing" error, install
-# the latest Visual C++ Redistributable from:
-# https://aka.ms/vs/17/release/vc_redist.x64.exe
 ```
 
-> **Note:** OpenSSL is not currently published on the Microsoft Store. Use
-> Chocolatey, Scoop, or the manual installer above.
+```text
+# Alternative: manual installer
+# Download from: https://slproweb.com/products/Win32OpenSSL.html
+# Add its bin directory to PATH (e.g., C:\OpenSSL-Win64\bin).
+# Note: the slproweb builds require the Microsoft Visual C++ Redistributable
+# (https://aka.ms/vs/17/release/vc_redist.x64.exe). The "Light" builds do not
+# bundle it, so install it if you see a "VCRUNTIME140.dll is missing" error.
+```
 
 **Linux (Ubuntu/Debian):**
 ```bash
@@ -226,51 +222,35 @@ sudo yum install tkinter
 
 ### Quick Setup Guide (Windows)
 
-This guide uses **two different terminals**. Do steps 1–2 in an
-**Administrator PowerShell** (required to install Chocolatey/OpenSSL), then do
-steps 3–6 in a **new, normal (non-Administrator) Command Prompt**.
-
-> ⚠️ **Open a fresh terminal after installing anything.** Newly installed tools
-> (Git, Python, OpenSSL) are only added to `PATH` in terminals opened *after*
-> the install. If `git`, `python`, or `openssl` is "not recognized," close the
-> window and open a new one (or run `refreshenv` in the Chocolatey shell).
-
-**Steps 1–2 — Administrator PowerShell** (right-click PowerShell → "Run as administrator"):
+**1. Install Scoop, Git, and OpenSSL.** Open a normal (non-Administrator)
+PowerShell window and run:
 ```powershell
-# 1. Install Git and Python from the Microsoft Store
-#    - Search for "Git" and install
-#    - Search for "Python 3.10" (or newer) and install
-#    - Search for "Windows Terminal" (optional but recommended)
-
-# 2. Install Chocolatey, then OpenSSL (OpenSSL is NOT on the Microsoft Store)
-Set-ExecutionPolicy Bypass -Scope Process -Force
-[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
-iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-choco install openssl
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+scoop install git openssl
 ```
 
-**Steps 3–6 — new, normal Command Prompt** (not Administrator):
+**2. Install Python** from the Microsoft Store (search for "Python 3.10" or
+newer — pip and tkinter are included).
+
+**3. Download the project.** On the
+[repository page](https://github.com/jgoodloe/OCSPTesting), click
+**Code → Download ZIP**, then extract the ZIP file.
+
+**4. Open the folder in a terminal.** Open the extracted `OCSPTesting` folder,
+right-click an empty space inside it, and choose **Open in Terminal**.
+
+**5. Create the virtual environment, install dependencies, and run:**
 ```bat
-:: 3. Navigate to a user directory (avoid system directories)
-cd %USERPROFILE%\Documents
-mkdir OCSPTesting
-cd OCSPTesting
-
-:: 4. Clone the repository
-git clone https://github.com/jgoodloe/OCSPTesting.git .
-
-:: 5. Create virtual environment and install dependencies
 python -m venv venv
 venv\Scripts\activate.bat
 pip install -r requirements.txt
-
-:: 6. Run the application
 python app.py
 ```
 
-> Using PowerShell instead of Command Prompt for steps 3–6? Activate the
-> virtual environment with `venv\Scripts\Activate.ps1` (if blocked, run
-> `Set-ExecutionPolicy -Scope Process RemoteSigned` first).
+> **Tip:** Open a fresh terminal after installing Scoop/Git/OpenSSL/Python so the
+> new tools are on your `PATH`. Using PowerShell instead of Command Prompt for
+> step 5? Activate the virtual environment with `venv\Scripts\Activate.ps1`.
 
 ### Prerequisites
 Before installing the OCSP Testing Tool, ensure you have installed:
@@ -278,7 +258,7 @@ Before installing the OCSP Testing Tool, ensure you have installed:
 2. **Python 3.10+** with pip (for running the application)
 3. **OpenSSL** (for certificate operations)
 
-**💡 Windows Users**: We recommend installing Git and Python from the Microsoft Store for the easiest setup experience. OpenSSL is **not** available on the Microsoft Store — install it with Chocolatey (`choco install openssl`), Scoop, or the manual installer (see the OpenSSL section above; the manual installer also needs the Microsoft Visual C++ Redistributable). For the best command-line experience, also consider installing **Windows Terminal** from the Microsoft Store.
+**💡 Windows Users**: Git and OpenSSL are **not** on the Microsoft Store — install both with [Scoop](https://scoop.sh): `scoop install git openssl` (see the Quick Setup Guide below to install Scoop first). Install **Python** from the Microsoft Store (pip and tkinter are included). For the best command-line experience, also consider installing **Windows Terminal** from the Microsoft Store.
 
 See the [System Requirements](#system-requirements) section above for detailed installation instructions.
 
@@ -421,9 +401,9 @@ cd /opt/OCSPTesting
 
 #### Git Not Found
 ```bash
-# Windows: Install from Microsoft Store (recommended)
-# Search for "Git" in Microsoft Store and install
-# Or download from: https://git-scm.com/download/win
+# Windows: Git is NOT on the Microsoft Store.
+# Install with Scoop: scoop install git
+# Or download the official installer: https://git-scm.com/download/win
 
 # Linux (Ubuntu/Debian): sudo apt install git
 # Linux (CentOS/RHEL): sudo yum install git
@@ -447,9 +427,8 @@ python -m pip --version
 
 #### OpenSSL Not Found
 ```bash
-# Windows: OpenSSL is not on the Microsoft Store.
-# Install using Chocolatey: choco install openssl
-# Or using Scoop: scoop install openssl
+# Windows: OpenSSL is NOT on the Microsoft Store.
+# Install with Scoop: scoop install openssl
 # Or download the manual installer (requires the Microsoft Visual C++
 # Redistributable): https://slproweb.com/products/Win32OpenSSL.html
 # Or add an existing OpenSSL to PATH: set PATH=%PATH%;C:\OpenSSL-Win64\bin
@@ -473,8 +452,8 @@ where openssl
 # Method 2: Add to PATH for current session
 set PATH=%PATH%;C:\OpenSSL-Win64\bin
 
-# Method 3: Using Chocolatey (recommended)
-choco install openssl
+# Method 3: Using Scoop (recommended)
+scoop install openssl
 # This automatically adds OpenSSL to PATH
 
 # Verify OpenSSL installation
