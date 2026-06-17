@@ -1,12 +1,15 @@
-# OCSP Server Test Suite
+# OCSP Server Test Suite Modern UI
 
 A comprehensive testing application for OCSP (Online Certificate Status Protocol) servers with both GUI and monitoring capabilities. This tool runs structured tests against OCSP servers and provides detailed reporting with exportable results (JSON/CSV).
 
 ## Screenshots
 
-![OCSP Testing GUI - Main Interface](assets/Screenshot%202025-10-22%20125739.png)
+![OCSP Testing GUI - OCSP/CRL Monitor](<img width="1919" height="1028" alt="image" src="https://github.com/user-attachments/assets/c32ed416-2df9-4d24-9ef5-aa5d036e43a9" />)
 
-![OCSP Testing GUI - Monitoring Tab](assets/Screenshot%202025-10-22%20125817.png)
+![OCSP Testing GUI - Conformance Testing](<img width="1919" height="1030" alt="image" src="https://github.com/user-attachments/assets/17657970-8bd1-4bc4-afce-a2f3f2daff8b" />)
+
+![OCSP Testing GUI - Console Log](<img width="1918" height="1027" alt="image" src="https://github.com/user-attachments/assets/df7b8c28-4c71-4b39-ae41-67f76934c962" />)
+
 
 ## Features
 
