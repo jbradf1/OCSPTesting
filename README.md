@@ -4,11 +4,11 @@ A comprehensive testing application for OCSP (Online Certificate Status Protocol
 
 ## Screenshots
 
-![OCSP Testing GUI - OCSP/CRL Monitor](<img width="1919" height="1028" alt="image" src="https://github.com/user-attachments/assets/c32ed416-2df9-4d24-9ef5-aa5d036e43a9" />)
+![OCSP Testing GUI - OCSP/CRL Monitor](assets/Screenshot%202026-06-17%20110024.png)
 
-![OCSP Testing GUI - Conformance Testing](<img width="1919" height="1030" alt="image" src="https://github.com/user-attachments/assets/17657970-8bd1-4bc4-afce-a2f3f2daff8b" />)
+![OCSP Testing GUI - Conformance Testing](assets/Conformance%20Testing.png)
 
-![OCSP Testing GUI - Console Log](<img width="1918" height="1027" alt="image" src="https://github.com/user-attachments/assets/df7b8c28-4c71-4b39-ae41-67f76934c962" />)
+![OCSP Testing GUI - Console Log](assets/Console%20Log.png)
 
 
 ## Features
